@@ -1,0 +1,10 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- bash: docker build --iidfile image.id -t behave-example:latest .
+  displayName: 'Build Docker Image'
+
+- bash: docker run -i -u 1000:1000 -v $PWD:/workspace/ -w /workspace $(cat image.id) python3 -m behave
+  displayName: 'Run Behave Tests in Docker'
