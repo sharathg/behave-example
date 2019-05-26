@@ -7,7 +7,7 @@ Feature: Search for Ronaldo in Ask.com
 
   Scenario: Search for Moon
     Given Open Ask.com
-    Given Search Box is present
-     When Search for Moon
-     When URL and Title has Ask.com and Moon
-     Then First 3 Search Results should contains Moon
+     When Search Box is present
+     Then Search for Moon
+     And URL and Title should have Ask.com and Moon
+     And First 3 Search Results should contain Moon

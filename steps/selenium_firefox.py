@@ -45,13 +45,13 @@ def step_impl(context):
     context.driver.save_screenshot("screenshot-" + filename + ".png")
 
 
-@given('Search Box is present')
+@when('Search Box is present')
 def step_impl(context):
     context.search_box_id = "search-box"
     assert context.driver.find_element_by_id(context.search_box_id)
 
 
-@when('Search for {name}')
+@then('Search for {name}')
 def step_impl(context, name):
     search_box = context.driver.find_element_by_id(context.search_box_id)
     search_box.send_keys(name)
@@ -59,7 +59,7 @@ def step_impl(context, name):
     Helpers.wait_for_page_load(context)
 
 
-@when('URL and Title has {search_engine} and {name}')
+@then('URL and Title should have {search_engine} and {name}')
 def step_impl(context, search_engine, name):
     assert search_engine.lower() in context.driver.current_url.lower()
     assert search_engine.lower() in context.driver.title.lower()
@@ -67,9 +67,10 @@ def step_impl(context, search_engine, name):
     assert name.lower() in context.driver.title.lower()
 
 
-@then('First 3 Search Results should contains {name}')
+@then('First 3 Search Results should contain {name}')
 def step_impl(context, name):
     search_results_elems = context.driver.find_elements_by_class_name("PartialSearchResults-item-title")
     search_results_text = [elem.text for elem in search_results_elems]
     for result in search_results_text[:3]:
         assert name.lower() in result.lower()
+    context.driver.save_screenshot("screenshot-Moon-Search-Results.png")
