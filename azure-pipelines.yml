@@ -3,24 +3,5 @@ pool:
 
 steps:
 
-- bash: source docker.sh
+- bash: source test.sh
   displayName: 'Build and Run Tests in Docker'
-
-- bash: cp -r *.png *.log $(Build.ArtifactStagingDirectory)
-  condition: or(succeeded(), failed())
-  displayName: 'Copy Screenshots and Logs to Artifact Directory'
-
-- task: PublishBuildArtifacts@1
-  condition: or(succeeded(), failed())
-  displayName: 'Publish'
-  inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: '$(Build.BuildId).DebugBuilds'
-    publishLocation: 'Container'
-
-- task: PublishTestResults@2
-  condition: or(succeeded(), failed())
-  displayName: 'Publish Behave Test Results'
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: 'reports/*.xml'
