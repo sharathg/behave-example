@@ -1,4 +1,4 @@
-# behave-example
+# behave-example [![Build Status](https://dev.azure.com/sharathgpai/behave-example/_apis/build/status/sharathg.behave-example?branchName=master)](https://dev.azure.com/sharathgpai/behave-example/_build/latest?definitionId=4&branchName=master)
 Example/Base project for BDD Testing using @behave (https://github.com/behave/behave)
 
 
