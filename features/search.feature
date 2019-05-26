@@ -1,4 +1,4 @@
-Feature: Search for Ronaldo in Ask.com
+Feature: Search for Moon in Ask.com
 
   Scenario: Open Ask.com on Firefox
     Given Open Ask.com
