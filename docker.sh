@@ -8,4 +8,4 @@ cat image.id
 echo ""
 echo ""
 echo "*** Test Docker ***"
-docker run -u 1000:1000 -v $PWD:/workspace/ -w /workspace $(cat image.id) bash python3 -m behave
+docker run -i -u 1000:1000 -v $PWD:/workspace/ -w /workspace $(cat image.id) bash python3 -m behave

@@ -48,7 +48,6 @@ RUN GK_VERSION="0.24.0" \
 # Define Environment Variables
 #=============================
 ENV SHELL=/bin/bash
-ENV PATH=/home/behave/selenium/:${PATH}
 
 #==================
 # Add user to Group
