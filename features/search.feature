@@ -9,5 +9,5 @@ Feature: Search for Ronaldo in Ask.com
     Given Open Ask.com
      When Search Box is present
      Then Search for Moon
-     And URL and Title should have Ask.com and Moon
+     And URL and Title should have Ask and Moon
      And First 3 Search Results should contain Moon
