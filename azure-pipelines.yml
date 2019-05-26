@@ -7,9 +7,11 @@ steps:
   displayName: 'Build and Run Tests in Docker'
 
 - bash: cp -r *.png *.log $(Build.ArtifactStagingDirectory)
+  condition: and(succeeded(), failed())
   displayName: 'Copy Screenshots and Logs to Artifact Directory'
 
 - task: PublishBuildArtifacts@1
+  condition: and(succeeded(), failed())
   displayName: 'Publish'
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
@@ -17,6 +19,7 @@ steps:
     publishLocation: 'Container'
 
 - task: PublishTestResults@2
+  condition: and(succeeded(), failed())
   displayName: 'Publish Behave Test Results'
   inputs:
     testResultsFormat: 'JUnit'
